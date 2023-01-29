@@ -1,0 +1,17 @@
+{
+	"menu": [
+		{
+			"name": "網站導覽",
+			"list": [
+				{ "text": "教會沿革", "href": "#" },
+				{ "text": "教會週報", "href": "#" }
+			]
+		},
+		{
+			"name": "聯絡資訊",
+			"list": [
+				{ "text": "someone@example.com", "href": "mailto:someone@example.com" }
+			]
+		}
+	]
+}

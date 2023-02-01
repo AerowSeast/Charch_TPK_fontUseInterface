@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { markdown } from 'markdown';
+// import { markdown } from 'markdown';
 import { useRoute } from 'vue-router';
 import { ref, watch, onMounted } from 'vue';
 import img from '@/assets/img/church.png';
@@ -34,7 +34,7 @@ export default {
 
 		document.documentElement.style.setProperty('--intro-background', `url('${img}')`);
 
-		return { data, markdown };
+		return { data };
 	}
 };
 </script>

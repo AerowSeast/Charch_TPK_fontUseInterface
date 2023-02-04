@@ -13,19 +13,17 @@
 		</div>
 
 		<div id="nav-menu">
-			<!-- 有次列表 -->
-			<!-- <div class="nav-item" v-for="(i, k) in yesChildList" :key="k">
-				<a href="#" @click="clickJump(i)">{{ i.name }}</a>
-				<div class="subnav">
-					<router-link class="subnav-item" v-for="(j, k) in i" :key="k" :to="j.href">
-						{{ j.text }}
-					</router-link>
-				</div>
-			</div> -->
 			<!-- 無次列表 -->
 			<div class="nav-item" v-for="(i, k) in model.menu" :key="k">
 				<!-- 第一階層連結 -->
 				<a href="#" @click="clickJump(i)">{{ i.name }}</a>
+			</div>
+
+			<!-- 切換語言 -->
+			<div class="language-wrap">
+				<select class="language-switch" name="language-switch">
+					<option v-for="item in language" :key="item.id" :value="item.value">{{ item.label }}</option>
+				</select>
 			</div>
 		</div>
 	</nav>
@@ -45,6 +43,25 @@ export default {
 		// scroll effect
 		let ofst = window.pageYOffset;
 		const hidden = ref(!1);
+
+		// languageData
+		const language = ref([
+			{
+				id:"1",
+				label:"繁中",
+				value:"zh-tw"
+			},
+			{
+				id:"2",
+				label:"簡中",
+				value:"zh-ch"
+			},
+			{
+				id:"3",
+				label:"EN",
+				value:"en"
+			}
+		])
 
 		onMounted(() =>
 			window.addEventListener('scroll', () => {
@@ -68,6 +85,7 @@ export default {
 
 		return {
 			model,
+			language,
 			hidden,
 			clickJump,
 			jumpHome
@@ -98,6 +116,7 @@ export default {
 		}
 		svg{
 			display:none;
+			cursor:pointer;
 		}
 	}
 
@@ -112,7 +131,7 @@ export default {
 
 			a {
 				color: #3C4048;
-				font-size: 1.25rem;
+				font-size: 1.05rem;
 
 				&::after {
 					content: "";
@@ -134,6 +153,21 @@ export default {
 				}
 			}
 
+		}
+
+		.language-wrap{
+			.language-switch{
+				border:none;
+				border-radius:4px;
+				outline:none;
+				padding:5px 20px;
+				font-size:1rem;
+				box-shadow:0px 0px 10px rgba(0,0,0,0.1);
+				cursor:pointer;
+				option{
+					font-size:1.05rem;
+				}
+			}
 		}
 	}
 }

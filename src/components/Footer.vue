@@ -11,7 +11,7 @@
 				<div class="contact_info">
 					<ul>
 						<li class="contact">
-							<a href="#" title="">聯絡我們</a>
+							<a title="聯絡我們" @click="handleJump()">聯絡我們</a>
 						</li>
 						<li>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -49,12 +49,22 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
 import * as model from '@/models/Footer.json';
 
 export default {
-	name: 'Footer',
 	setup() {
-		return { model };
+		// define router
+		const router = useRouter();
+
+		// handle contact form Jump
+		const handleJump = () =>{
+			router.push({
+				path:"/form"
+			})
+		}
+
+		return { model ,handleJump };
 	},
 };
 </script>
@@ -128,7 +138,7 @@ export default {
 							font-size: 1.2rem;
 							font-weight: 600;
 							transition: all .5s;
-
+							cursor:pointer;
 							&:hover {
 								letter-spacing: 5px;
 							}
